@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   backend-app:
+    hostname: backend-app
     build:
       context: https://github.com/etec-integration-project/etec-pi-2024-backend-drolito123.git
       dockerfile: Dockerfile
@@ -56,7 +57,7 @@ services:
 
 networks:
   pensado-app:
-    external: true
+    driver: bridge
 
 volumes:
   db_data:
