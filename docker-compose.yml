@@ -55,7 +55,9 @@ services:
       - pensado-app
 
 networks:
-  pensado-app:  # La red será creada automáticamente si no existe
+  pensado-app:
+    external: true
 
 volumes:
-  db_data:  # El volumen será creado automáticamente si no existe
+  db_data:
+    external: false
