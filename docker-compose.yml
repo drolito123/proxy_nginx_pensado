@@ -14,7 +14,7 @@ services:
       - DB_PASSWORD=123456
       - DB_NAME=DB
     networks:
-      - etec-app-network
+      - pensado-app
 
   db:
     image: mysql:8.0
@@ -25,7 +25,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - etec-app-network
+      - pensado-app
     volumes:
       - db_data:/var/lib/mysql
 
@@ -37,13 +37,13 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - etec-app-network
+      - pensado-app
     depends_on:
       - backend-app
 
   proxy:
     build:
-      context: https://github.com/drolito123/proxy_nginx_pensado.git  # Repositorio del proxy (Nginx)
+      context: https://github.com/drolito123/proxy_nginx_pensado.git
       dockerfile: Dockerfile
     container_name: proxy
     ports:
@@ -52,10 +52,10 @@ services:
       - frontend-app
       - backend-app
     networks:
-      - etec-app-network
+      - pensado-app
 
 networks:
-  etec-app-network:
+  pensado-app:
     external: true
 
 volumes:
